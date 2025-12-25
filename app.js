@@ -757,16 +757,6 @@ const Ambient = {
                 'https://assets.mixkit.co/active_storage/sfx/2431/2431-preview.mp3',
                 'https://assets.mixkit.co/active_storage/sfx/2189/2189-preview.mp3'
             ]
-        },
-        fire: {
-            name: 'موقد',
-            emoji: '🔥',
-            // Freesound.org campfire crackling - verified real fire sounds
-            urls: [
-                'https://cdn.freesound.org/previews/157/157950_2552041-lq.mp3',
-                'https://cdn.freesound.org/previews/351/351543_5121236-lq.mp3',
-                'https://cdn.freesound.org/previews/558/558117_8676212-lq.mp3'
-            ]
         }
     },
 
