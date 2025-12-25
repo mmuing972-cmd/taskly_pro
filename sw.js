@@ -1,12 +1,13 @@
 // Taskly Pro Service Worker - Offline Support
-const CACHE_NAME = 'taskly-pro-v1';
+// Using relative paths for GitHub Pages compatibility
+const CACHE_NAME = 'taskly-pro-v2';
 const STATIC_ASSETS = [
-    '/',
-    '/index.html',
-    '/styles.css',
-    '/app.js',
-    '/manifest.json',
-    '/icon-192.png'
+    './',
+    './index.html',
+    './styles.css',
+    './app.js',
+    './manifest.json',
+    './icon-192.png'
 ];
 
 // Install - Cache static assets
@@ -15,6 +16,7 @@ self.addEventListener('install', event => {
         caches.open(CACHE_NAME)
             .then(cache => cache.addAll(STATIC_ASSETS))
             .then(() => self.skipWaiting())
+            .catch(err => console.log('Cache failed:', err))
     );
 });
 
@@ -30,7 +32,7 @@ self.addEventListener('activate', event => {
     );
 });
 
-// Fetch - Serve from cache, fallback to network
+// Fetch - Network first, fallback to cache
 self.addEventListener('fetch', event => {
     // Skip non-GET requests
     if (event.request.method !== 'GET') return;
@@ -39,25 +41,26 @@ self.addEventListener('fetch', event => {
     if (!event.request.url.startsWith(self.location.origin)) return;
 
     event.respondWith(
-        caches.match(event.request)
-            .then(cached => {
-                // Return cached version or fetch from network
-                return cached || fetch(event.request)
-                    .then(response => {
-                        // Cache successful responses
-                        if (response.status === 200) {
-                            const clone = response.clone();
-                            caches.open(CACHE_NAME)
-                                .then(cache => cache.put(event.request, clone));
-                        }
-                        return response;
-                    });
+        fetch(event.request)
+            .then(response => {
+                // Cache successful responses
+                if (response.status === 200) {
+                    const clone = response.clone();
+                    caches.open(CACHE_NAME)
+                        .then(cache => cache.put(event.request, clone));
+                }
+                return response;
             })
             .catch(() => {
-                // Offline fallback for navigation
-                if (event.request.mode === 'navigate') {
-                    return caches.match('/index.html');
-                }
+                // Offline - try cache
+                return caches.match(event.request)
+                    .then(cached => {
+                        if (cached) return cached;
+                        // Fallback to index.html for navigation
+                        if (event.request.mode === 'navigate') {
+                            return caches.match('./index.html');
+                        }
+                    });
             })
     );
 });
