@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+
+    <!-- SEO Meta Tags -->
+    <title>Taskly Pro - مدير الإنتاجية الذكي | إدارة المهام والتركيز</title>
+    <meta name="description"
+        content="Taskly Pro - تطبيق إدارة المهام والإنتاجية الأكثر تطوراً. نظم مهامك، تابع عاداتك، وركز مع تقنية البومودورو. مجاني 100%.">
+    <meta name="keywords"
+        content="إدارة المهام, تطبيق إنتاجية, بومودورو, to-do list, productivity, task manager, عادات, تركيز">
+    <meta name="author" content="Taskly Pro">
+    <meta name="robots" content="index, follow">
+
+    <!-- Theme & PWA -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Taskly Pro">
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Favicon (using emoji as placeholder - replace with real icon) -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✅</text></svg>">
+    <link rel="apple-touch-icon" href="icon-192.png">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Taskly Pro - مدير الإنتاجية الذكي">
+    <meta property="og:description" content="نظم مهامك، تابع عاداتك، وركز مع تقنية البومودورو. مجاني 100%.">
+    <meta property="og:image" content="og-image.png">
+    <meta property="og:locale" content="ar_SA">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Taskly Pro - مدير الإنتاجية الذكي">
+    <meta name="twitter:description" content="نظم مهامك، تابع عاداتك، وركز مع تقنية البومودورو.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="bg-gradient"></div>
+        <div class="floating-shapes">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+    </div>
+
+    <div class="app-wrapper">
+        <!-- Top Navigation Bar - ALWAYS VISIBLE -->
+        <header class="top-navbar">
+            <div class="navbar-brand">
+                <div class="brand-logo">
+                    <span class="logo-gradient">T</span>
+                </div>
+                <h1 class="brand-name">Taskly<span>Pro</span></h1>
+            </div>
+
+            <!-- Main Navigation Tabs -->
+            <nav class="main-nav">
+                <button class="nav-tab active" data-tab="tasks">
+                    <span class="tab-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 11l3 3L22 4" />
+                            <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+                        </svg>
+                    </span>
+                    <span class="tab-text">المهام</span>
+                    <span class="tab-badge" id="tasksBadge">0</span>
+                </button>
+                <button class="nav-tab" data-tab="pomodoro">
+                    <span class="tab-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                        </svg>
+                    </span>
+                    <span class="tab-text">التركيز</span>
+                </button>
+                <button class="nav-tab" data-tab="notes">
+                    <span class="tab-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                            <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" />
+                        </svg>
+                    </span>
+                    <span class="tab-text">الملاحظات</span>
+                </button>
+                <button class="nav-tab" data-tab="habits">
+                    <span class="tab-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                    </span>
+                    <span class="tab-text">العادات</span>
+                </button>
+                <button class="nav-tab" data-tab="stats">
+                    <span class="tab-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 20V10M12 20V4M6 20v-6" />
+                        </svg>
+                    </span>
+                    <span class="tab-text">الإحصائيات</span>
+                </button>
+            </nav>
+
+            <!-- User Stats Quick View -->
+            <div class="navbar-stats">
+                <div class="stat-pill level-pill" id="levelPill">
+                    <span class="pill-icon">⭐</span>
+                    <span class="pill-text">المستوى <strong id="userLevel">1</strong></span>
+                </div>
+                <div class="stat-pill streak-pill" id="streakPill">
+                    <span class="pill-icon">🔥</span>
+                    <span class="pill-text"><strong id="streakDays">0</strong> يوم</span>
+                </div>
+                <div class="stat-pill points-pill" id="pointsPill">
+                    <span class="pill-icon">💎</span>
+                    <span class="pill-text"><strong id="totalPoints">0</strong></span>
+                </div>
+                <button class="theme-btn" id="themeToggle" title="تغيير المظهر">
+                    <span class="sun-icon">☀️</span>
+                    <span class="moon-icon">🌙</span>
+                </button>
+                <button class="theme-btn settings-btn" id="settingsBtn" title="الإعدادات">
+                    ⚙️
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- ==================== TASKS TAB ==================== -->
+            <section class="tab-content active" id="tasksTab">
+                <!-- Quick Stats Cards -->
+                <div class="quick-stats">
+                    <div class="stat-card glass">
+                        <div class="stat-icon">📋</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="totalTasks">0</span>
+                            <span class="stat-label">إجمالي المهام</span>
+                        </div>
+                    </div>
+                    <div class="stat-card glass">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="completedToday">0</span>
+                            <span class="stat-label">أنجزت اليوم</span>
+                        </div>
+                    </div>
+                    <div class="stat-card glass">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="pendingTasks">0</span>
+                            <span class="stat-label">قيد الانتظار</span>
+                        </div>
+                    </div>
+                    <div class="stat-card glass streak-card">
+                        <div class="stat-icon animated-fire">🔥</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="currentStreak">0</span>
+                            <span class="stat-label">أيام متتالية</span>
+                        </div>
+                        <div class="streak-progress">
+                            <div class="streak-bar" id="streakBar"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task Categories Tabs -->
+                <div class="category-tabs">
+                    <button class="cat-tab active" data-category="all">
+                        <span>الكل</span>
+                    </button>
+                    <button class="cat-tab" data-category="today">
+                        <span>اليوم</span>
+                        <span class="cat-badge" id="todayBadge">0</span>
+                    </button>
+                    <button class="cat-tab" data-category="upcoming">
+                        <span>القادم</span>
+                    </button>
+                    <button class="cat-tab" data-category="important">
+                        <span>⭐ مهم</span>
+                    </button>
+                    <button class="cat-tab" data-category="completed">
+                        <span>مكتمل</span>
+                    </button>
+                </div>
+
+                <!-- Task Input Area -->
+                <div class="task-input-section glass">
+                    <div class="input-main">
+                        <button class="voice-input-btn" id="voiceBtn" title="إدخال صوتي">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z" />
+                                <path d="M19 10v2a7 7 0 01-14 0v-2" />
+                                <line x1="12" y1="19" x2="12" y2="23" />
+                                <line x1="8" y1="23" x2="16" y2="23" />
+                            </svg>
+                            <div class="voice-waves">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </button>
+                        <input type="text" id="taskInput" class="task-input"
+                            placeholder="✨ أضف مهمة جديدة... (اضغط Enter للإضافة)">
+                        <button class="quick-add-btn" id="quickAddBtn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Quick Options -->
+                    <div class="input-options">
+                        <button class="option-btn" id="datePickerBtn">
+                            <span>📅</span>
+                            <span>التاريخ</span>
+                        </button>
+                        <button class="option-btn" id="priorityBtn">
+                            <span class="priority-indicator" id="selectedPriority"></span>
+                            <span>الأولوية</span>
+                        </button>
+                        <button class="option-btn" id="repeatBtn">
+                            <span>🔄</span>
+                            <span>تكرار</span>
+                        </button>
+                        <button class="option-btn" id="listBtn">
+                            <span>📁</span>
+                            <span>القائمة</span>
+                        </button>
+                        <button class="option-btn expand-btn" id="expandBtn">
+                            <span>⚙️</span>
+                            <span>المزيد</span>
+                        </button>
+                    </div>
+
+                    <!-- Expanded Options Panel -->
+                    <div class="expanded-options hidden" id="expandedOptions">
+                        <div class="option-group">
+                            <label>📅 تاريخ الاستحقاق</label>
+                            <input type="date" id="taskDueDate" class="styled-input">
+                        </div>
+                        <div class="option-group">
+                            <label>⏰ الوقت</label>
+                            <input type="time" id="taskDueTime" class="styled-input">
+                        </div>
+                        <div class="option-group">
+                            <label>🎯 الأولوية</label>
+                            <div class="priority-options">
+                                <button class="priority-btn" data-priority="urgent">
+                                    <span class="dot urgent"></span> عاجل
+                                </button>
+                                <button class="priority-btn" data-priority="high">
+                                    <span class="dot high"></span> عالي
+                                </button>
+                                <button class="priority-btn" data-priority="medium">
+                                    <span class="dot medium"></span> متوسط
+                                </button>
+                                <button class="priority-btn active" data-priority="low">
+                                    <span class="dot low"></span> منخفض
+                                </button>
+                            </div>
+                        </div>
+                        <div class="option-group">
+                            <label>🔄 التكرار</label>
+                            <select id="taskRecurrence" class="styled-select">
+                                <option value="none">مرة واحدة</option>
+                                <option value="daily">يومياً</option>
+                                <option value="weekdays">أيام العمل</option>
+                                <option value="weekly">أسبوعياً</option>
+                                <option value="monthly">شهرياً</option>
+                                <option value="custom">مخصص...</option>
+                            </select>
+                        </div>
+                        <div class="option-group custom-days hidden" id="customDaysGroup">
+                            <label>اختر الأيام</label>
+                            <div class="days-selector">
+                                <label class="day-chip"><input type="checkbox" value="0"><span>أحد</span></label>
+                                <label class="day-chip"><input type="checkbox" value="1"><span>اثنين</span></label>
+                                <label class="day-chip"><input type="checkbox" value="2"><span>ثلاثاء</span></label>
+                                <label class="day-chip"><input type="checkbox" value="3"><span>أربعاء</span></label>
+                                <label class="day-chip"><input type="checkbox" value="4"><span>خميس</span></label>
+                                <label class="day-chip"><input type="checkbox" value="5"><span>جمعة</span></label>
+                                <label class="day-chip"><input type="checkbox" value="6"><span>سبت</span></label>
+                            </div>
+                        </div>
+                        <div class="option-group full-width">
+                            <label>📝 ملاحظات</label>
+                            <textarea id="taskNotes" class="styled-textarea"
+                                placeholder="أضف تفاصيل إضافية..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tasks List -->
+                <div class="tasks-container" id="tasksContainer">
+                    <!-- Empty State -->
+                    <div class="empty-state" id="tasksEmptyState">
+                        <div class="empty-illustration">
+                            <div class="empty-icon">🎯</div>
+                            <div class="empty-circles">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+                        <h3>لا توجد مهام!</h3>
+                        <p>ابدأ بإضافة مهمتك الأولى وحقق أهدافك</p>
+                        <button class="cta-btn" id="emptyAddBtn">
+                            <span>✨</span> أضف مهمة الآن
+                        </button>
+                    </div>
+
+                    <!-- Tasks List -->
+                    <ul class="tasks-list" id="tasksList"></ul>
+                </div>
+            </section>
+
+            <!-- ==================== POMODORO TAB ==================== -->
+            <section class="tab-content" id="pomodoroTab">
+                <!-- Pomodoro Mode Selector -->
+                <div class="pomo-modes">
+                    <button class="pomo-mode active" data-mode="focus">
+                        <span class="mode-icon">🎯</span>
+                        <span class="mode-name">تركيز</span>
+                        <span class="mode-time">25 دقيقة</span>
+                    </button>
+                    <button class="pomo-mode" data-mode="shortBreak">
+                        <span class="mode-icon">☕</span>
+                        <span class="mode-name">استراحة قصيرة</span>
+                        <span class="mode-time">5 دقائق</span>
+                    </button>
+                    <button class="pomo-mode" data-mode="longBreak">
+                        <span class="mode-icon">🌴</span>
+                        <span class="mode-name">استراحة طويلة</span>
+                        <span class="mode-time">15 دقيقة</span>
+                    </button>
+                </div>
+
+                <!-- Main Timer Display -->
+                <div class="timer-container glass">
+                    <div class="timer-ring-wrapper">
+                        <svg class="timer-ring" viewBox="0 0 200 200">
+                            <defs>
+                                <linearGradient id="timerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#667eea" />
+                                    <stop offset="100%" style="stop-color:#764ba2" />
+                                </linearGradient>
+                            </defs>
+                            <circle class="ring-bg" cx="100" cy="100" r="90" />
+                            <circle class="ring-progress" cx="100" cy="100" r="90" id="timerRing" />
+                        </svg>
+                        <div class="timer-display">
+                            <span class="timer-minutes" id="timerMin">25</span>
+                            <span class="timer-colon">:</span>
+                            <span class="timer-seconds" id="timerSec">00</span>
+                        </div>
+                    </div>
+
+                    <!-- Timer Controls -->
+                    <div class="timer-controls">
+                        <button class="timer-ctrl-btn secondary" id="resetTimer" title="إعادة تعيين">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                                <path d="M3 3v5h5" />
+                            </svg>
+                        </button>
+                        <button class="timer-ctrl-btn primary" id="startTimer">
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="play-icon" id="playIcon">
+                                <polygon points="5 3 19 12 5 21 5 3" />
+                            </svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="pause-icon hidden" id="pauseIcon">
+                                <rect x="6" y="4" width="4" height="16" />
+                                <rect x="14" y="4" width="4" height="16" />
+                            </svg>
+                        </button>
+                        <button class="timer-ctrl-btn secondary" id="skipTimer" title="تخطي">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5 4 15 12 5 20 5 4" />
+                                <line x1="19" y1="5" x2="19" y2="19" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Session Progress -->
+                    <div class="session-progress">
+                        <span class="session-label">الجلسات</span>
+                        <div class="session-dots" id="sessionDots">
+                            <span class="session-dot"></span>
+                            <span class="session-dot"></span>
+                            <span class="session-dot"></span>
+                            <span class="session-dot"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ambient Sounds -->
+                <div class="ambient-section glass">
+                    <h3 class="section-title">🎵 أصوات التركيز</h3>
+                    <div class="sounds-grid">
+                        <button class="sound-card" data-sound="none">
+                            <span class="sound-emoji">🔇</span>
+                            <span class="sound-name">صامت</span>
+                        </button>
+                        <button class="sound-card" data-sound="rain">
+                            <span class="sound-emoji">🌧️</span>
+                            <span class="sound-name">مطر</span>
+                        </button>
+                        <button class="sound-card" data-sound="ocean">
+                            <span class="sound-emoji">🌊</span>
+                            <span class="sound-name">محيط</span>
+                        </button>
+                        <button class="sound-card" data-sound="fire">
+                            <span class="sound-emoji">🔥</span>
+                            <span class="sound-name">موقد</span>
+                        </button>
+                    </div>
+                    <div class="volume-slider-container">
+                        <span class="volume-icon">🔊</span>
+                        <input type="range" id="volumeSlider" min="0" max="100" value="60" class="volume-slider">
+                        <span class="volume-value" id="volumeValue">60%</span>
+                    </div>
+                </div>
+
+                <!-- Today's Focus Stats -->
+                <div class="focus-stats glass">
+                    <div class="focus-stat">
+                        <span class="focus-stat-icon">🍅</span>
+                        <div class="focus-stat-info">
+                            <span class="focus-stat-value" id="todaySessions">0</span>
+                            <span class="focus-stat-label">جلسات اليوم</span>
+                        </div>
+                    </div>
+                    <div class="focus-stat">
+                        <span class="focus-stat-icon">⏱️</span>
+                        <div class="focus-stat-info">
+                            <span class="focus-stat-value" id="todayMinutes">0</span>
+                            <span class="focus-stat-label">دقائق تركيز</span>
+                        </div>
+                    </div>
+                    <div class="focus-stat">
+                        <span class="focus-stat-icon">🏆</span>
+                        <div class="focus-stat-info">
+                            <span class="focus-stat-value" id="bestStreak">0</span>
+                            <span class="focus-stat-label">أفضل سلسلة</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enter Focus Mode Button -->
+                <button class="focus-mode-btn" id="enterFocusMode">
+                    <span class="btn-icon">🎬</span>
+                    <span class="btn-text">الدخول لوضع التركيز السينمائي</span>
+                </button>
+            </section>
+
+            <!-- ==================== NOTES TAB ==================== -->
+            <section class="tab-content" id="notesTab">
+                <div class="notes-header">
+                    <h2 class="section-title">📝 ملاحظاتي</h2>
+                    <button class="add-btn" id="addNoteBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                        <span>ملاحظة جديدة</span>
+                    </button>
+                </div>
+
+                <div class="notes-container">
+                    <!-- Empty State -->
+                    <div class="empty-state" id="notesEmptyState">
+                        <div class="empty-illustration">
+                            <div class="empty-icon">📝</div>
+                            <div class="empty-circles">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+                        <h3>لا توجد ملاحظات</h3>
+                        <p>احفظ أفكارك وملاحظاتك المهمة هنا</p>
+                        <button class="cta-btn" id="emptyNoteBtn">
+                            <span>✨</span> أضف ملاحظة
+                        </button>
+                    </div>
+
+                    <!-- Notes Masonry Grid -->
+                    <div class="notes-grid" id="notesGrid"></div>
+                </div>
+            </section>
+
+            <!-- ==================== HABITS TAB ==================== -->
+            <section class="tab-content" id="habitsTab">
+                <div class="habits-header">
+                    <h2 class="section-title">⭐ عاداتي اليومية</h2>
+                    <button class="add-btn" id="addHabitBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                        <span>عادة جديدة</span>
+                    </button>
+                </div>
+
+                <!-- Week View -->
+                <div class="week-view glass">
+                    <div class="week-days" id="weekDays">
+                        <!-- Days will be generated by JS -->
+                    </div>
+                </div>
+
+                <div class="habits-container">
+                    <!-- Empty State -->
+                    <div class="empty-state" id="habitsEmptyState">
+                        <div class="empty-illustration">
+                            <div class="empty-icon">🌟</div>
+                            <div class="empty-circles">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+                        <h3>لا توجد عادات</h3>
+                        <p>ابنِ عادات إيجابية وتابع تقدمك يومياً</p>
+                        <button class="cta-btn" id="emptyHabitBtn">
+                            <span>✨</span> أضف عادة
+                        </button>
+                    </div>
+
+                    <!-- Habits List -->
+                    <ul class="habits-list" id="habitsList"></ul>
+                </div>
+            </section>
+
+            <!-- ==================== STATS TAB ==================== -->
+            <section class="tab-content" id="statsTab">
+                <h2 class="section-title">📊 لوحة الإنتاجية</h2>
+
+                <!-- Level Progress -->
+                <div class="level-card glass">
+                    <div class="level-info">
+                        <div class="level-badge" id="levelBadge">
+                            <span class="level-icon">⭐</span>
+                            <span class="level-number" id="displayLevel">1</span>
+                        </div>
+                        <div class="level-details">
+                            <h3 id="levelTitle">مبتدئ</h3>
+                            <p class="level-next">المستوى التالي: <span id="nextLevelPoints">100</span> نقطة</p>
+                        </div>
+                    </div>
+                    <div class="level-progress">
+                        <div class="level-bar">
+                            <div class="level-fill" id="levelFill"></div>
+                        </div>
+                        <span class="level-points"><span id="currentPoints">0</span> / <span
+                                id="requiredPoints">100</span></span>
+                    </div>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-box glass">
+                        <div class="stat-box-icon">📋</div>
+                        <div class="stat-box-value" id="statTotalTasks">0</div>
+                        <div class="stat-box-label">إجمالي المهام</div>
+                    </div>
+                    <div class="stat-box glass">
+                        <div class="stat-box-icon">✅</div>
+                        <div class="stat-box-value" id="statCompletedTasks">0</div>
+                        <div class="stat-box-label">مهام مكتملة</div>
+                    </div>
+                    <div class="stat-box glass">
+                        <div class="stat-box-icon">🍅</div>
+                        <div class="stat-box-value" id="statPomodoroSessions">0</div>
+                        <div class="stat-box-label">جلسات بومودورو</div>
+                    </div>
+                    <div class="stat-box glass">
+                        <div class="stat-box-icon">⏱️</div>
+                        <div class="stat-box-value" id="statFocusHours">0</div>
+                        <div class="stat-box-label">ساعات تركيز</div>
+                    </div>
+                    <div class="stat-box glass">
+                        <div class="stat-box-icon">🔥</div>
+                        <div class="stat-box-value" id="statCurrentStreak">0</div>
+                        <div class="stat-box-label">سلسلة حالية</div>
+                    </div>
+                    <div class="stat-box glass">
+                        <div class="stat-box-icon">🏆</div>
+                        <div class="stat-box-value" id="statBestStreak">0</div>
+                        <div class="stat-box-label">أفضل سلسلة</div>
+                    </div>
+                </div>
+
+                <!-- Weekly Chart -->
+                <div class="weekly-chart glass">
+                    <h3>📈 الإنتاجية الأسبوعية</h3>
+                    <div class="chart-container">
+                        <div class="chart-bars" id="weeklyChart">
+                            <!-- Bars will be generated by JS -->
+                        </div>
+                        <div class="chart-labels">
+                            <span>سبت</span>
+                            <span>أحد</span>
+                            <span>اثنين</span>
+                            <span>ثلاثاء</span>
+                            <span>أربعاء</span>
+                            <span>خميس</span>
+                            <span>جمعة</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievements -->
+                <div class="achievements-section glass">
+                    <h3>🏅 الإنجازات</h3>
+                    <div class="achievements-grid" id="achievementsGrid">
+                        <!-- Achievements will be rendered here -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Radial FAB Menu -->
+        <div class="fab-container">
+            <button class="fab-main" id="fabMain">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+            </button>
+            <div class="fab-menu" id="fabMenu">
+                <button class="fab-option" data-action="task" title="مهمة جديدة">
+                    <span>📋</span>
+                </button>
+                <button class="fab-option" data-action="note" title="ملاحظة جديدة">
+                    <span>📝</span>
+                </button>
+                <button class="fab-option" data-action="pomodoro" title="بدء تركيز">
+                    <span>🍅</span>
+                </button>
+                <button class="fab-option" data-action="habit" title="عادة جديدة">
+                    <span>⭐</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== MODALS ==================== -->
+
+    <!-- Task Detail Modal -->
+    <div class="modal-overlay hidden" id="taskModal">
+        <div class="modal glass-modal">
+            <div class="modal-handle"></div>
+            <div class="modal-header">
+                <h2>تفاصيل المهمة</h2>
+                <button class="modal-close" id="closeTaskModal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-field">
+                    <label>العنوان</label>
+                    <input type="text" id="editTitle" class="modal-input" placeholder="عنوان المهمة">
+                </div>
+                <div class="modal-field">
+                    <label>الوصف</label>
+                    <textarea id="editDescription" class="modal-textarea" placeholder="أضف وصفاً..."></textarea>
+                </div>
+                <div class="modal-row">
+                    <div class="modal-field">
+                        <label>التاريخ</label>
+                        <input type="date" id="editDate" class="modal-input">
+                    </div>
+                    <div class="modal-field">
+                        <label>الوقت</label>
+                        <input type="time" id="editTime" class="modal-input">
+                    </div>
+                </div>
+                <div class="modal-field">
+                    <label>الأولوية</label>
+                    <div class="priority-options modal-priorities" id="editPriorities">
+                        <button class="priority-btn" data-priority="urgent">
+                            <span class="dot urgent"></span> عاجل
+                        </button>
+                        <button class="priority-btn" data-priority="high">
+                            <span class="dot high"></span> عالي
+                        </button>
+                        <button class="priority-btn" data-priority="medium">
+                            <span class="dot medium"></span> متوسط
+                        </button>
+                        <button class="priority-btn" data-priority="low">
+                            <span class="dot low"></span> منخفض
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-field">
+                    <label>التكرار</label>
+                    <select id="editRecurrence" class="modal-select">
+                        <option value="none">مرة واحدة</option>
+                        <option value="daily">يومياً</option>
+                        <option value="weekdays">أيام العمل</option>
+                        <option value="weekly">أسبوعياً</option>
+                        <option value="monthly">شهرياً</option>
+                    </select>
+                </div>
+                <!-- Subtasks -->
+                <div class="modal-field">
+                    <label>المهام الفرعية</label>
+                    <div class="subtasks-container" id="editSubtasks"></div>
+                    <div class="add-subtask-row">
+                        <input type="text" id="newSubtask" class="modal-input" placeholder="أضف مهمة فرعية...">
+                        <button class="add-subtask-btn" id="addSubtaskBtn">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn delete" id="deleteTaskBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="3 6 5 6 21 6" />
+                        <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" />
+                    </svg>
+                    حذف
+                </button>
+                <button class="modal-btn save" id="saveTaskBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z" />
+                        <polyline points="17 21 17 13 7 13 7 21" />
+                        <polyline points="7 3 7 8 15 8" />
+                    </svg>
+                    حفظ
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Note Modal -->
+    <div class="modal-overlay hidden" id="noteModal">
+        <div class="modal glass-modal note-modal-size">
+            <div class="modal-handle"></div>
+            <div class="modal-header">
+                <input type="text" id="noteTitle" class="note-title-input" placeholder="عنوان الملاحظة...">
+                <div class="note-header-actions">
+                    <button class="icon-btn" id="pinNoteBtn" title="تثبيت">📌</button>
+                    <button class="modal-close" id="closeNoteModal">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18" />
+                            <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <textarea id="noteContent" class="note-content-input" placeholder="اكتب ملاحظتك هنا..."></textarea>
+                <div class="note-colors" id="noteColors">
+                    <button class="color-dot active" data-color="default" style="--dot-color: #ffffff"></button>
+                    <button class="color-dot" data-color="red" style="--dot-color: #FECACA"></button>
+                    <button class="color-dot" data-color="orange" style="--dot-color: #FED7AA"></button>
+                    <button class="color-dot" data-color="yellow" style="--dot-color: #FEF08A"></button>
+                    <button class="color-dot" data-color="green" style="--dot-color: #BBF7D0"></button>
+                    <button class="color-dot" data-color="blue" style="--dot-color: #BFDBFE"></button>
+                    <button class="color-dot" data-color="purple" style="--dot-color: #DDD6FE"></button>
+                    <button class="color-dot" data-color="pink" style="--dot-color: #FBCFE8"></button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn delete" id="deleteNoteBtn">حذف</button>
+                <button class="modal-btn save" id="saveNoteBtn">حفظ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Habit Modal -->
+    <div class="modal-overlay hidden" id="habitModal">
+        <div class="modal glass-modal">
+            <div class="modal-handle"></div>
+            <div class="modal-header">
+                <h2>عادة جديدة</h2>
+                <button class="modal-close" id="closeHabitModal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-field">
+                    <label>اسم العادة</label>
+                    <input type="text" id="habitName" class="modal-input" placeholder="مثال: قراءة 30 دقيقة">
+                </div>
+                <div class="modal-field">
+                    <label>الأيقونة</label>
+                    <div class="emoji-grid" id="habitEmojis">
+                        <button class="emoji-btn active" data-emoji="📚">📚</button>
+                        <button class="emoji-btn" data-emoji="💪">💪</button>
+                        <button class="emoji-btn" data-emoji="🏃">🏃</button>
+                        <button class="emoji-btn" data-emoji="🧘">🧘</button>
+                        <button class="emoji-btn" data-emoji="💧">💧</button>
+                        <button class="emoji-btn" data-emoji="🥗">🥗</button>
+                        <button class="emoji-btn" data-emoji="😴">😴</button>
+                        <button class="emoji-btn" data-emoji="✍️">✍️</button>
+                        <button class="emoji-btn" data-emoji="🎵">🎵</button>
+                        <button class="emoji-btn" data-emoji="🌅">🌅</button>
+                        <button class="emoji-btn" data-emoji="☕">☕</button>
+                        <button class="emoji-btn" data-emoji="🎯">🎯</button>
+                    </div>
+                </div>
+                <div class="modal-field">
+                    <label>الهدف</label>
+                    <div class="goal-input-row">
+                        <input type="number" id="habitGoal" class="modal-input small" value="1" min="1">
+                        <select id="habitGoalUnit" class="modal-select">
+                            <option value="times">مرات</option>
+                            <option value="minutes">دقائق</option>
+                            <option value="hours">ساعات</option>
+                        </select>
+                        <span>يومياً</span>
+                    </div>
+                </div>
+                <div class="modal-field">
+                    <label>أيام التكرار</label>
+                    <div class="days-selector habit-days">
+                        <label class="day-chip"><input type="checkbox" value="0" checked><span>أحد</span></label>
+                        <label class="day-chip"><input type="checkbox" value="1" checked><span>اثنين</span></label>
+                        <label class="day-chip"><input type="checkbox" value="2" checked><span>ثلاثاء</span></label>
+                        <label class="day-chip"><input type="checkbox" value="3" checked><span>أربعاء</span></label>
+                        <label class="day-chip"><input type="checkbox" value="4" checked><span>خميس</span></label>
+                        <label class="day-chip"><input type="checkbox" value="5" checked><span>جمعة</span></label>
+                        <label class="day-chip"><input type="checkbox" value="6" checked><span>سبت</span></label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn cancel" id="cancelHabitBtn">إلغاء</button>
+                <button class="modal-btn save" id="saveHabitBtn">حفظ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cinematic Focus Mode -->
+    <div class="focus-overlay hidden" id="focusOverlay">
+        <div class="focus-background" id="focusBackground">
+            <video class="focus-video" id="focusVideo" muted loop></video>
+        </div>
+        <div class="focus-content">
+            <button class="focus-exit" id="exitFocusMode">✕</button>
+            <div class="focus-timer-large">
+                <div class="focus-ring-wrapper">
+                    <svg class="focus-ring" viewBox="0 0 300 300">
+                        <circle class="focus-ring-bg" cx="150" cy="150" r="140" />
+                        <circle class="focus-ring-progress" cx="150" cy="150" r="140" id="focusRingProgress" />
+                    </svg>
+                    <div class="focus-time">
+                        <span id="focusMin">25</span>
+                        <span class="focus-colon">:</span>
+                        <span id="focusSec">00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="focus-controls">
+                <button class="focus-ctrl secondary" id="focusReset">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                        <path d="M3 3v5h5" />
+                    </svg>
+                </button>
+                <button class="focus-ctrl primary" id="focusPlayPause">
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="focus-play" id="focusPlayIcon">
+                        <polygon points="5 3 19 12 5 21 5 3" />
+                    </svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="focus-pause hidden" id="focusPauseIcon">
+                        <rect x="6" y="4" width="4" height="16" />
+                        <rect x="14" y="4" width="4" height="16" />
+                    </svg>
+                </button>
+                <button class="focus-ctrl secondary" id="focusSkip">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="5 4 15 12 5 20 5 4" />
+                        <line x1="19" y1="5" x2="19" y2="19" />
+                    </svg>
+                </button>
+            </div>
+            <p class="focus-message" id="focusMessage">ركز على مهمتك 🎯</p>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Level Up Celebration -->
+    <div class="levelup-overlay hidden" id="levelUpOverlay">
+        <div class="levelup-content">
+            <div class="levelup-icon">🎉</div>
+            <h2>ارتقيت للمستوى <span id="newLevel">2</span>!</h2>
+            <p id="levelUpMessage">أحسنت! استمر في الإنجاز</p>
+            <button class="levelup-close" id="closeLevelUp">رائع!</button>
+        </div>
+        <div class="confetti" id="confetti"></div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay hidden" id="settingsModal">
+        <div class="modal-box settings-modal">
+            <div class="modal-header">
+                <h2>⚙️ الإعدادات</h2>
+                <button class="modal-close" id="closeSettingsModal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-section">
+                    <h3>🎨 المظهر</h3>
+                    <div class="setting-row">
+                        <span>الوضع الليلي</span>
+                        <button class="toggle-btn" id="darkModeToggle">
+                            <span class="toggle-slider"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h3>📊 البيانات</h3>
+                    <div class="setting-row">
+                        <span>تصدير البيانات</span>
+                        <button class="setting-btn" id="exportDataBtn">📥 تصدير</button>
+                    </div>
+                </div>
+
+                <div class="settings-section danger-zone">
+                    <h3>⚠️ منطقة الخطر</h3>
+                    <p class="danger-warning">هذه الإجراءات لا يمكن التراجع عنها!</p>
+                    <button class="danger-btn" id="deleteAccountBtn">
+                        🗑️ حذف جميع البيانات
+                    </button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="app-version">Taskly Pro v1.0.0</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal-overlay hidden" id="deleteConfirmModal">
+        <div class="modal-box confirm-modal">
+            <div class="confirm-icon">⚠️</div>
+            <h2>هل أنت متأكد؟</h2>
+            <p>سيتم حذف جميع بياناتك نهائياً:</p>
+            <ul class="delete-list">
+                <li>✗ جميع المهام</li>
+                <li>✗ جميع الملاحظات</li>
+                <li>✗ جميع العادات</li>
+                <li>✗ جميع الإحصائيات والنقاط</li>
+            </ul>
+            <p class="confirm-warning">هذا الإجراء لا يمكن التراجع عنه!</p>
+            <div class="confirm-buttons">
+                <button class="cancel-btn" id="cancelDeleteBtn">إلغاء</button>
+                <button class="confirm-delete-btn" id="confirmDeleteBtn">نعم، احذف الكل</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Elements for Ambient Sounds -->
+    <audio id="rainAudio" loop preload="none">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-light-rain-loop-2393.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="cafeAudio" loop preload="none">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-restaurant-crowd-talking-ambience-444.mp3"
+            type="audio/mpeg">
+    </audio>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
