@@ -2978,3 +2978,199 @@ body {
     background: rgba(255, 255, 255, 0.4) !important;
     transform: scale(1.1) !important;
 }
+
+/* ==================== MOBILE RESPONSIVE ==================== */
+@media screen and (max-width: 768px) {
+    /* Top Navbar - Mobile */
+    .top-navbar {
+        flex-wrap: wrap;
+        padding: 12px 16px;
+        gap: 12px;
+    }
+    
+    .navbar-brand {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .main-nav {
+        width: 100%;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .nav-tab {
+        padding: 10px 14px;
+        font-size: 0.85rem;
+        flex-shrink: 0;
+    }
+    
+    .tab-text {
+        display: none;
+    }
+    
+    .navbar-stats {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .stat-pill {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+    }
+    
+    /* Main Content - Mobile */
+    .main-content {
+        padding: 16px 12px;
+    }
+    
+    /* Quick Stats Cards - Mobile */
+    .quick-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .stat-card {
+        padding: 16px;
+    }
+    
+    /* Task Input - Mobile */
+    .task-input-section {
+        padding: 16px;
+    }
+    
+    .task-input-wrapper {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    #taskInput {
+        width: 100%;
+    }
+    
+    .input-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    /* Tasks List - Mobile */
+    .task-item {
+        padding: 14px;
+    }
+    
+    .task-actions {
+        opacity: 1;
+        position: relative;
+    }
+    
+    /* Categories - Mobile */
+    .category-tabs {
+        overflow-x: auto;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .cat-tab {
+        padding: 8px 14px;
+        font-size: 0.8rem;
+        flex-shrink: 0;
+    }
+    
+    /* Pomodoro Timer - Mobile */
+    .timer-display {
+        font-size: 4rem;
+    }
+    
+    .timer-ring-wrapper {
+        width: 220px;
+        height: 220px;
+    }
+    
+    /* Sound Buttons - Mobile */
+    .sounds-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 12px !important;
+        max-width: 100% !important;
+    }
+    
+    .sound-card {
+        width: auto !important;
+        height: 80px !important;
+        min-width: 0 !important;
+    }
+    
+    .sound-emoji {
+        font-size: 1.8rem !important;
+    }
+    
+    .sound-name {
+        font-size: 0.7rem !important;
+    }
+    
+    /* Notes Grid - Mobile */
+    .notes-grid {
+        columns: 1;
+        gap: 12px;
+    }
+    
+    /* Modal - Mobile */
+    .modal-box {
+        width: 95%;
+        max-height: 90vh;
+        margin: 16px;
+    }
+    
+    /* FAB - Mobile */
+    .fab-container {
+        bottom: 20px;
+        left: 20px;
+    }
+    
+    /* Focus Mode - Mobile */
+    .focus-timer-large {
+        transform: scale(0.8);
+    }
+    
+    .focus-exit {
+        top: 20px !important;
+        right: 20px !important;
+        width: 44px !important;
+        height: 44px !important;
+    }
+    
+    /* Stats Dashboard - Mobile */
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Settings Modal - Mobile */
+    .settings-modal {
+        max-width: 100%;
+    }
+}
+
+/* Small Mobile (less than 400px) */
+@media screen and (max-width: 400px) {
+    .quick-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .timer-display {
+        font-size: 3rem;
+    }
+    
+    .nav-tab {
+        padding: 8px 10px;
+    }
+    
+    .stat-pill {
+        display: none;
+    }
+    
+    .theme-btn, .settings-btn {
+        width: 40px;
+        height: 40px;
+    }
+}
