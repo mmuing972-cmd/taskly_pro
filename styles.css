@@ -2937,3 +2937,44 @@ body {
     opacity: 1 !important;
     font-size: 1.3rem;
 }
+
+/* Sound Buttons - 3 columns centered */
+.sounds-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 20px !important;
+    max-width: 360px !important;
+    margin: 0 auto 20px auto !important;
+}
+
+.sound-card {
+    width: 100px !important;
+    height: 100px !important;
+    border-radius: 16px !important;
+}
+
+/* Focus Mode Exit Button - Ensure clickable */
+.focus-exit {
+    position: fixed !important;
+    top: 30px !important;
+    right: 30px !important;
+    z-index: 10000 !important;
+    width: 50px !important;
+    height: 50px !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    border: 2px solid rgba(255, 255, 255, 0.5) !important;
+    border-radius: 50% !important;
+    color: white !important;
+    font-size: 24px !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.2s ease !important;
+}
+
+.focus-exit:hover {
+    background: rgba(255, 255, 255, 0.4) !important;
+    transform: scale(1.1) !important;
+}
